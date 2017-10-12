@@ -8,6 +8,8 @@ it takes awhile....
 
 Update: works with other news websites now!
 
+Bug: crashes areound article 500-600
+
 Article check goes through every website in newspaper.popular_urls()
 and says how many articles are on each website
 
