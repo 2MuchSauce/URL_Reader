@@ -1,48 +1,20 @@
-import urllib.request
-#import enchant
+from newspaper import Article
+url = input("URL: ")
+#url = 'http://www.cnn.com/2017/10/10/entertainment/donna-karan-harvey-weinstein/index.html'
 
-def findWord():
-    while(True):
-        try:
-            url = input("Enter in any website you want: ")
-            req = urllib.request.Request(url)
-            with urllib.request.urlopen(req) as response:
-               the_page = response.read()
-            page = str(the_page)
-            page = page.split()
-            break
-        except:
-            print("Your url is invalid")
+article = Article(url, language='en') # English
 
+article.download()
+article.parse()
 
-    cleanPage = []
-    abc = 'abcdefghijklmnopqrstuvwxyz'
-    ABC = abc.upper()
-    letters = abc + ABC
-    for e in page:
-        word = ''
-        for c in e:
-            if c in letters:
-                word += c
-        if word != '':
-            cleanPage.append(word)
+print(article.text[:])
 
-    #print(cleanPage[1:100])
-    '''
-    d = enchant.Dict("en_US")
-    cleanPage = []
-    for i in page:
-        if d.check(page[i]):
-            cleanPage.append(page[i])
-    print(cleanPage[1:100])
-    '''
+val = input("What word would you like to find: ")
+ 
+x = 0
 
-    val = input("What word would you like to find: ")
-    x = 0
-    for i in range(len(cleanPage)):
-        if cleanPage[i].lower() == val.lower():
-            x += 1
-    print("The word", val, "was found", x, "times")
-    findWord()
-    
-findWord()
+articleArray = article.text.split()
+for i in range(len(articleArray)):
+        if val.lower() in articleArray[i].lower():
+                x += 1
+print("The word", val, "was found", x, "times")
