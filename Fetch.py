@@ -38,7 +38,7 @@ def findWord():
 	val = input("What word would you like to find: ")
 	x = 0
 	for i in range(len(cleanPage)):
-	    if cleanPage[i] == val:
+	    if cleanPage[i].lower() == val.lower():
 	        x += 1
 	print("The word", val, "was found", x, "times")
 	findWord()
