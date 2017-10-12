@@ -41,5 +41,5 @@ def findWord():
 	    if cleanPage[i] == val:
 	        x += 1
 	print("The word", val, "was found", x, "times")
+	findWord()
 findWord()
-time = input(" ")
