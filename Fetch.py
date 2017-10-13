@@ -17,6 +17,14 @@ and says how many articles are on each website
 Category check goes through every website in newspaper.popular_urls()
 and says how many categoryies are on each website
 
+------------------------------------------------------------------
+CNN -  799 Articles - 1187 Trumps
+BBC -  179 Articles - 91   Trumps
+ABC -  194 Articles - 241  Trumps
+HUF - 2461 Articles - 555  Trumps
+FOX -  302 Articles - 257  Trumps
+NBC - 1201 Articles - 1296 Trumps
+
 '''
 
 def articleCheck():
@@ -70,11 +78,11 @@ def trumpCheck(websiteName, url):
     print("The word", val, "was found", x, "times")
 
 while(True):
-    choice = input("Run Trump Check [t], Article Check [a] or Category Check [c]       [q] to Quit")
+    choice = input("Run Trump Check [t], Article Check [a] or Category Check [c]       [q] to Quit\n")
 
     if(choice == "t"):
         print ("what website?")
-        website = input("ABC News [a], BBC News [b], CNN [c], Huffington Post [h], Fox News [f], NBC News [n]")
+        website = input("ABC News [a], BBC News [b], CNN [c], Huffington Post [h], Fox News [f], NBC News [n]\n")
         if(website == "a"):
             trumpCheck('ABC News','http://abcnews.go.com/')
         elif(website == "c"):
