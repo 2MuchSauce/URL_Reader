@@ -9,6 +9,7 @@ it takes awhile....
 Update: works with other news websites now!
 
 Bug: crashes areound article 500-600
+Update: fixed with try/exept 
 
 Article check goes through every website in newspaper.popular_urls()
 and says how many articles are on each website
@@ -52,14 +53,17 @@ def trumpCheck(websiteName, url):
     maxNumArticles = cnn_paper.size()
     print ("{} has {} articles.\n".format(websiteName,maxNumArticles))
     for i in range(len(cnn_paper.articles)):
-        article = cnn_paper.articles[i]
-        article.download()
-        article.parse()
-        #print(article.text[:])
-        articleArray = article.text.split()
-        for j in range(len(articleArray)):
-            if val.lower() in articleArray[j].lower():
-                x += 1
+        try:
+            article = cnn_paper.articles[i]
+            article.download()
+            article.parse()
+            #print(article.text[:])
+            articleArray = article.text.split()
+            for j in range(len(articleArray)):
+                if val.lower() in articleArray[j].lower():
+                    x += 1
+        except:
+            print ("Article didn't load properly, moving on...")
         print ("{} - Article: {}/{} - Trumps: {}\n".format(websiteName,i,maxNumArticles,x))
             
 
